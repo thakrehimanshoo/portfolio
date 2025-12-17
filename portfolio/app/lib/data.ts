@@ -11,17 +11,16 @@ export interface Project{
 
 }
 
-export const projects: Project[] =[
-    {
+export const projects: Project[] = [
+  {
     id: 1,
     title: "HeadsUp",
     description: "Real-time placement notification system serving 300+ users at IIT KGP",
     longDescription: "A comprehensive notification system that scrapes CDC portal and delivers real-time alerts to students using Server-Sent Events.",
     tech: ["React", "Node.js", "SSE", "Web Scraping"],
-    image: "/projects/headsup.jpg",
+    image: "/projects/headsup.jpg",  // ← Must start with /
     metrics: "300+ active users",
     github: "https://github.com/yourusername/headsup",
-    demo: "https://headsup-demo.com"
   },
   {
     id: 2,
