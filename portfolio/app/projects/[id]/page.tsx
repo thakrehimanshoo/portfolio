@@ -2,6 +2,23 @@ import { projects } from '@/app/lib/data';
 import { notFound } from 'next/navigation';
 import ProjectImage from '@/app/components/ProjectImage';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({ params }: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const { id } = await params;
+  const project = projects.find(p => p.id === parseInt(id));
+  
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+    };
+  }
+
+  return {
+    title: `${project.title} | Hima's Portfolio`,
+    description: project.description,
+  };
+}
 
 export async function generateStaticParams() {
   return projects.map((project) => ({
@@ -14,7 +31,6 @@ interface ProjectPageProps {
     id: string;
   }>;
 }
-
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
   
