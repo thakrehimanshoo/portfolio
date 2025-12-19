@@ -8,56 +8,26 @@ import TimelineItem from './components/TimelineItem';
 import ContactForm from './components/ContactForm';
 import Footer from './components/Footer';
 import AnimatedSection from './components/AnimatedSection';  // ← Add this
-
+import HeroScene from './components/three/HeroScene'; 
+import SkillsScene from './components/three/SkillScene';
 export default function Home() {
   return (
     <>
       <Navbar />
       
       {/* Hero Section - No animation needed */}
-      <section id="home" className="min-h-screen bg-gray-950 text-white flex items-center">
-        <div className="max-w-6xl mx-auto px-4">
+      <section id="home" className="min-h-screen bg-gray-950 text-white flex items-center relative overflow-hidden">
+        {/* 3D Background */}
+        <div className="absolute inset-0 z-0">
+          <HeroScene />
+        </div>
+        
+        {/* Content - now with relative positioning to appear above 3D */}
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
           <h1 className="text-6xl font-bold mb-4">
             Hi, I'm Hima 👋
           </h1>
-          <p className="text-2xl text-gray-400 mb-2">
-            Full Stack Developer
-          </p>
-          <p className="text-xl text-gray-500 mb-8">
-            Chemical Engineer | Competitive Programmer | Tech Lead
-          </p>
-          
-          {/* Quick Stats */}
-          <div className="flex gap-8 mb-8 text-sm">
-            <div>
-              <div className="text-2xl font-bold text-blue-400">300+</div>
-              <div className="text-gray-500">Active Users</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-blue-400">2x</div>
-              <div className="text-gray-500">Internships</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-blue-400">1448</div>
-              <div className="text-gray-500">Codeforces</div>
-            </div>
-            <div>
-              <div className="text-2xl font-bold text-blue-400">₹1.29Cr</div>
-              <div className="text-gray-500">Budget Managed</div>
-            </div>
-          </div>
-          
-          <div className="flex gap-4">
-            <a 
-              href="#projects"
-              className="bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition"
-            >
-              View My Work
-            </a>
-            <button className="border border-blue-600 hover:bg-blue-600 px-6 py-3 rounded-lg transition">
-              Download Resume
-            </button>
-          </div>
+          {/* ... rest of your hero content ... */}
         </div>
       </section>
 
@@ -106,6 +76,19 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AnimatedSection>
+  <div className="mb-16">
+    <h3 className="text-2xl font-bold mb-6 text-center">Interactive 3D Skills</h3>
+    <p className="text-center text-gray-400 mb-8">
+      Hover over the orbs and drag to rotate! 🎮
+    </p>
+    <div className="w-full h-[500px] border-2 border-blue-500/20 rounded-lg overflow-hidden">
+      <SkillsScene />
+    </div>
+  </div>
+</AnimatedSection>
+
 
       {/* Skills Section - Animated */}
       <section id="skills" className="min-h-screen bg-gray-950 text-white py-20">
